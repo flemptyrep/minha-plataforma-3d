@@ -1,31 +1,24 @@
 "use client";
+import { createContext, useContext, useState, useMemo } from 'react';
 
-import { createContext, useContext, useState, useEffect } from 'react';
-import { Idioma } from '@/lib/dicionario';
+interface LanguageContextType {
+  idioma: string;
+  mudarIdioma: (lang: string) => void; // <-- Nome corrigido para o Header reconhecer!
+}
 
-const LanguageContext = createContext<any>(null);
+const LanguageContext = createContext<LanguageContextType>({ idioma: 'pt', mudarIdioma: () => {} });
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [idioma, setIdioma] = useState<Idioma>('pt'); // pt é o padrão
-
-  // Quando o site abre, ele procura se o utilizador já tinha escolhido um idioma antes
-  useEffect(() => {
-    const salvo = localStorage.getItem('idioma3DVault') as Idioma;
-    if (salvo) setIdioma(salvo);
-  }, []);
-
-  // Função para mudar a língua e guardar na memória do navegador
-  const mudarIdioma = (novoIdioma: Idioma) => {
-    setIdioma(novoIdioma);
-    localStorage.setItem('idioma3DVault', novoIdioma);
-  };
+export function LanguageProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+  const [idioma, setIdioma] = useState('pt');
+  
+  // Otimização exigida pelo SonarCloud
+  const value = useMemo(() => ({ idioma, mudarIdioma: setIdioma }), [idioma]);
 
   return (
-    <LanguageContext.Provider value={{ idioma, mudarIdioma }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );
 }
 
-// Ferramenta que as páginas vão usar para saber a língua
 export const useLanguage = () => useContext(LanguageContext);

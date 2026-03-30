@@ -22,7 +22,6 @@ export default function GaleriaPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const ADMIN_EMAIL = 'reislorenasouza@gmail.com';
 
-  // O "Cérebro" das Línguas
   const { idioma } = useLanguage();
   const t = dicionario[idioma as keyof typeof dicionario];
 
@@ -35,10 +34,11 @@ export default function GaleriaPage() {
       const { data } = await supabase.from('projetos').select('*').order('created_at', { ascending: false });
 
       if (data) {
-        if (!ehAdmin) {
-          setProjetos(data.filter(p => p.status === 'aprovado'));
-        } else {
+        // SOLUÇÃO SONAR: Evitar o "!" (Não) e fazer a verificação positiva primeiro
+        if (ehAdmin) {
           setProjetos(data);
+        } else {
+          setProjetos(data.filter(p => p.status === 'aprovado'));
         }
       }
       setLoading(false);

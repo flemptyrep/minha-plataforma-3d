@@ -19,7 +19,9 @@ export default function SalaComando() {
   useEffect(() => {
     async function verificarAdmin() {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user || user.email !== ADMIN_EMAIL) {
+      
+      // Código limpo com Optional Chaining (Exigência do SonarCloud)
+      if (user?.email !== ADMIN_EMAIL) {
         router.push('/');
         return;
       }
@@ -40,16 +42,14 @@ export default function SalaComando() {
     setActionLoading(projetoId);
     
     try {
-      // 1. Pegamos a tua sessão atual e o Token de Segurança
       const { data: { session } } = await supabase.auth.getSession();
       const token = session?.access_token;
 
-      // 2. Enviamos para a API com o Token
       const res = await fetch('/aprovar', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` // A Chave Mágica!
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ projetoId, acao })
       });

@@ -61,18 +61,20 @@ export default function Header() {
             </Link>
           )}
 
-          {!user ? (
-            <div className="flex items-center gap-4 ml-2">
-              <Link href="/login" className="text-sm font-bold text-gray-200 hover:text-white transition-all">{t.entrar}</Link>
-              <Link href="/cadastro" className="hidden md:block text-sm font-bold bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/30 border border-blue-500">
-                {t.registar}
-              </Link>
-            </div>
-          ) : (
-            <button onClick={handleLogout} className="text-xs font-bold bg-red-500/10 text-red-500 px-4 py-2 rounded-full hover:bg-red-500 hover:text-white transition-all uppercase tracking-widest ml-2 border border-red-500/20">
-              {t.sair}
-            </button>
-          )}
+          {user ? (
+          <button onClick={handleLogout} className="text-xs font-bold bg-red-500/10 text-red-500 px-4 py-2 rounded-xl hover:bg-red-500 hover:text-white transition-all uppercase tracking-widest">
+            {t.sair}
+          </button>
+        ) : (
+          <div className="flex items-center gap-4 ml-2">
+            <Link href="/login" className="text-sm font-bold text-gray-200 hover:text-white transition-colors">
+              {t.entrar}
+            </Link>
+            <Link href="/cadastro" className="hidden md:block text-sm font-bold bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-500 transition-all">
+              {t.registar}
+            </Link>
+          </div>
+        )}
 
           {/* 🌍 CÁPSULA DE IDIOMAS COM IMAGENS REAIS */}
           <div className="flex items-center gap-1 bg-gray-900 p-1.5 rounded-full border border-gray-600 shadow-inner ml-2 md:ml-4">
