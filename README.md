@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ 3DVault - O Cofre dos Makers
 
-## Getting Started
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=flemptyrep_minha-plataforma-3d&token=254b644ad6c837cd679e387be37efa319e0c1598)](https://sonarcloud.io/summary/new_code?id=flemptyrep_minha-plataforma-3d)
 
-First, run the development server:
+Uma plataforma poliglota de partilha de ficheiros 3D (STL/3MF) com foco em segurança e curadoria comunitária.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Tecnologias Utilizadas
+- **Frontend:** Next.js (React) com Tailwind CSS
+- **Backend:** Supabase (Auth, Database, Storage)
+- **Segurança:** Políticas RLS (Row Level Security) e API Segura
+- **Qualidade:** Auditoria de código via SonarCloud
+- **Deployment:** Vercel
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Funcionalidades
+- 🌍 **Multi-idioma:** Suporte total para PT, ES e EN.
+- 🔐 **Segurança:** Base de dados blindada contra acessos não autorizados.
+- 🛡️ **Sala de Comando:** Dashboard administrativo para aprovação de projetos.
+- 📱 **Responsivo:** Design adaptado para qualquer dispositivo com Dark Mode nativo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Live Demo
+[Aceder ao 3DVault](https://3dvault.vercel.app)
